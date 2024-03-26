@@ -1,0 +1,2 @@
+Main-Class: ua.com.alevel.StartProj
+Class-Path: ../../libs/commons-lang3-3.14.0.jar
