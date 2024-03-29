@@ -1,0 +1,12 @@
+<students>
+    <student>
+        <number>1</number>
+        <firstName>Ярослав</firstName>
+        <lastName>Бондар</lastName>
+    </student>
+    <student>
+        <number>2</number>
+        <firstName>Олексій</firstName>
+        <lastName>Булигін</lastName>
+    </student>
+</students>
