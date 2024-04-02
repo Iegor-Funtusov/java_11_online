@@ -9,7 +9,21 @@ class ConsoleExam {
 
     void test() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        mathExam(reader);
+        String text = reader.readLine();
+        char[] chars = text.toCharArray();
+        int sum = 0;
+        for (char aChar : chars) {
+            int a = (int) aChar;
+            if (a >= 48 && a <= 57) {
+                sum = sum + Character.getNumericValue(aChar);
+            }
+        }
+        System.out.println("sum = " + sum);
+//        mathExam(reader);
+
+
+
+
 //        initStudent(reader);
 //        System.out.println("Hello, please enter first value");
 //        String text1 = reader.readLine();
