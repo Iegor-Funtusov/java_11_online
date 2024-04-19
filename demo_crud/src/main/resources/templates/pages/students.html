@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div layout:fragment="main_content">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        All students
+                    </div>
+                    <div>
+                        <a type="button" class="btn btn-primary" th:href="@{/students/new}">New student</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>First name</th>
+                        <th>Last name</th>
+                        <th>Age</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="student, iter : ${students}">
+                        <td th:text="${iter.index}"></td>
+                        <td th:text="${student.firstName}"></td>
+                        <td th:text="${student.lastName}"></td>
+                        <td th:text="${student.age}"></td>
+                        <td>
+                            <a type="button" class="btn btn-secondary" th:href="@{'/students/' + ${student.id} + '/update'}">
+                                <span class="material-symbols-rounded">metabolism</span>
+                            </a>
+                        </td>
+                        <td>
+                            <a type="button" class="btn btn-danger" th:href="@{'/students/' + ${student.id} + '/delete'}">
+                                <span class="material-symbols-rounded">delete</span>
+                            </a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
