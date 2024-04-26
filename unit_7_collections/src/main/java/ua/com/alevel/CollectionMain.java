@@ -3,6 +3,15 @@ package ua.com.alevel;
 public class CollectionMain {
     public static void main(String[] args) {
 
+
+        MapExample mapExample = new MapExample();
+        mapExample.add(new MapExample.Apple("1"), "антоновка");
+        mapExample.add(new MapExample.Apple("12"), "антоновка");
+        mapExample.add(new MapExample.Apple("11"), "антоновка");
+        mapExample.add(new MapExample.Apple("7"), "белый налив");
+
+        mapExample.print();
+
 //        Integer a1 = 100;
 //        Integer a2 = 2;
 //        System.out.println(a1 + " : " + String.format("%8s", Integer.toBinaryString(a1)).replace(' ', '0'));
@@ -22,7 +31,7 @@ public class CollectionMain {
 //        System.out.println(sum);
 
 //        new ListTest().test();
-        new MapTest().test();
+//        new MapTest().test();
 //        Array<Double> array = new Array<>();
 //        array.add(1);
 //        array.add(2);

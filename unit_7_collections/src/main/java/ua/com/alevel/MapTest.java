@@ -1,8 +1,11 @@
 package ua.com.alevel;
 
+import java.io.File;
 import java.util.*;
 
 public class MapTest {
+
+    Map<String, Set<File>> map = new HashMap<>();
 
     Map<Student, Integer> hashMap = new HashMap<>();
     Map<Student, Integer> linkedHashMap = new LinkedHashMap<>();
