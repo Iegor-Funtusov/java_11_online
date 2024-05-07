@@ -19,6 +19,6 @@ public class OptionalAndStreamMain {
 //        anonimClassTest.test();
 
         StreamTest streamTest = new StreamTest();
-        streamTest.test();
+        streamTest.exam();
     }
 }
