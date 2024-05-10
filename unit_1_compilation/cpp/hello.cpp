@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string.h>
 
 int main()
 {
@@ -8,4 +9,19 @@ int main()
     std::cout << *&a << '\n';
 
     return 0;
+}
+
+struct Student
+{
+    int age;
+    string name;
+    int ptrAge = &setAge;
+}
+
+Student s = malloc();
+s.ptrAge(10);
+
+void setAge(int age)
+{
+
 }
