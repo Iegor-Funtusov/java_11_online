@@ -15,6 +15,7 @@ public class StudentDaoImpl implements StudentDao {
 
     @Override
     public void create(Student entity) {
+        entity.setFullName(entity.getFirstName() + " " + entity.getLastName());
         bdStorage.createStudent(entity);
     }
 

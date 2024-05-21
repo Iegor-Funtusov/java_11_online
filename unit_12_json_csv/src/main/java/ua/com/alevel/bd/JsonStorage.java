@@ -11,7 +11,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-public class JsonStorage implements BDStorage {
+public final class JsonStorage implements BDStorage {
 
     private static final String STUDENT_JSON = "students.json";
 

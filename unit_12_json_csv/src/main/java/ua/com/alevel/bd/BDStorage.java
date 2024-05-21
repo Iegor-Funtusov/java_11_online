@@ -6,7 +6,7 @@ import ua.com.alevel.entity.Student;
 import java.util.Collection;
 import java.util.Optional;
 
-public interface BDStorage {
+public sealed interface BDStorage permits CSVStorage, JsonStorage {
     
     void createStudent(Student student);
     void updateStudent(Student student);

@@ -12,9 +12,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
-public class CSVStorage implements BDStorage {
+public final class CSVStorage implements BDStorage {
 
     private static final String STUDENT_CSV = "students.csv";
     private static final String GROUP_CSV = "groups.csv";

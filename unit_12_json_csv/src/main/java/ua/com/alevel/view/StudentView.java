@@ -2,7 +2,10 @@ package ua.com.alevel.view;
 
 import ua.com.alevel.dao.StudentDao;
 import ua.com.alevel.dao.impl.StudentDaoImpl;
+import ua.com.alevel.dto.StudentDto;
 import ua.com.alevel.entity.Student;
+import ua.com.alevel.facade.StudentFacade;
+import ua.com.alevel.facade.impl.StudentFacadeImpl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +15,7 @@ import java.util.Optional;
 public class StudentView {
 
     private final StudentDao studentDao = new StudentDaoImpl();
+    private final StudentFacade studentFacade = new StudentFacadeImpl();
 
     public void start(BufferedReader reader) throws IOException {
         System.out.println("Welcome to student view!");
@@ -104,12 +108,11 @@ public class StudentView {
     }
 
     private void getStudents() {
-        Collection<Student> students = studentDao.findAll();
-        for (Student student : students) {
-            System.out.println("Id " + student.getId());
-            System.out.println("First name " + student.getFirstName());
-            System.out.println("Last name " + student.getLastName());
-            System.out.println("Age " + student.getAge());
+        Collection<StudentDto> students = studentFacade.getAllStudents();
+        for (StudentDto student : students) {
+            System.out.println("Id " + student.id());
+            System.out.println("Name " + student.fullName());
+            System.out.println("Age " + student.age());
         }
     }
 }
