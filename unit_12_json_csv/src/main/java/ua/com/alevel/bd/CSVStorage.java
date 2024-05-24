@@ -43,7 +43,8 @@ public final class CSVStorage implements BDStorage {
 
     @Override
     public Optional<Student> findStudentById(String id) {
-        return Optional.empty();
+        readStudentsFromCSV();
+        return students.stream().filter(student -> student.getId().equals(id)).findFirst();
     }
 
     @Override
