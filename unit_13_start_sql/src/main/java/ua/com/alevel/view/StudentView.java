@@ -6,6 +6,7 @@ import ua.com.alevel.service.StudentService;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Collection;
 import java.util.List;
 
 public class StudentView {
@@ -32,7 +33,8 @@ public class StudentView {
         System.out.println("If you want find student by id please enter 3");
         System.out.println("If you want update student please enter 4");
         System.out.println("If you want delete student please enter 5");
-        System.out.println("If you want exit please enter 6");
+        System.out.println("If you want get count please enter 6");
+        System.out.println("If you want exit please enter 7");
     }
 
     private void goToOperations(String text, BufferedReader reader) throws IOException {
@@ -42,7 +44,8 @@ public class StudentView {
             case "3" -> getStudentById(reader);
             case "4" -> updateStudent(reader);
             case "5" -> deleteStudent(reader);
-            case "6" -> System.exit(0);
+            case "6" -> getCount();
+            case "7" -> System.exit(0);
         }
     }
 
@@ -95,9 +98,13 @@ public class StudentView {
     }
 
     private void getStudents() {
-        List<Student> students = studentService.getStudents();
+        Collection<Student> students = studentService.getStudents();
         for (Student student : students) {
             System.out.println("student = " + student);
         }
+    }
+
+    private void getCount() {
+        System.out.println("count: " + studentService.countStudents());
     }
 }

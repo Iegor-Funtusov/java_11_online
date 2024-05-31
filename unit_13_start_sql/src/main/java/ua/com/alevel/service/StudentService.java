@@ -1,8 +1,9 @@
 package ua.com.alevel.service;
 
-import ua.com.alevel.dao.StudentDao;
+import ua.com.alevel.dao.StudentDaoImpl;
 import ua.com.alevel.entity.Student;
 
+import java.util.Collection;
 import java.util.List;
 
 // C - create
@@ -11,7 +12,7 @@ import java.util.List;
 // D - delete
 public class StudentService {
 
-    private final StudentDao studentDao = new StudentDao();
+    private final StudentDaoImpl studentDao = new StudentDaoImpl();
 
     public void createStudent(Student student) {
         studentDao.createStudent(student);
@@ -26,10 +27,14 @@ public class StudentService {
     }
 
     public Student findStudent(Long id) {
-        return studentDao.getStudentById(id);
+        return studentDao.getStudentById(id).orElseThrow(() -> new RuntimeException("Student not found"));
     }
 
-    public List<Student> getStudents() {
+    public Collection<Student> getStudents() {
         return studentDao.getAllStudents();
+    }
+
+    public Long countStudents() {
+        return studentDao.count();
     }
 }
