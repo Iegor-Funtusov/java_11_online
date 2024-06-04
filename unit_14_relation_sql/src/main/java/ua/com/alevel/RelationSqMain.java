@@ -1,7 +1,9 @@
 package ua.com.alevel;
 
+import ua.com.alevel.controller.MainController;
+
 public class RelationSqMain {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        new MainController().start();
     }
 }
