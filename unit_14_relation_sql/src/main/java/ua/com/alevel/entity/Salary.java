@@ -6,8 +6,8 @@ import ua.com.alevel.annotations.Table;
 
 @Getter
 @Setter
-@Table(name = "departments")
-public class Department extends BaseEntity {
+@Table
+public class Salary extends BaseEntity {
 
-    private String name;
+    private Long salary;
 }

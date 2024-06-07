@@ -5,31 +5,35 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ua.com.alevel</groupId>
-    <artifactId>unit_14_relation_sql</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>alevel-orm</artifactId>
+    <version>1.0-beta</version>
 
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <reflections.version>0.10.2</reflections.version>
+        <slf4j.version>2.0.13</slf4j.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>${reflections.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
             <version>8.3.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.32</version>
-        </dependency>
-
-        <dependency>
-            <groupId>ua.com.alevel</groupId>
-            <artifactId>alevel-orm</artifactId>
-            <version>1.0-beta</version>
-        </dependency>
     </dependencies>
+
 </project>
