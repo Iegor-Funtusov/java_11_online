@@ -6,6 +6,8 @@ import jakarta.persistence.Query;
 import ua.com.alevel.config.JpaFactory;
 import ua.com.alevel.dao.DepartmentDao;
 import ua.com.alevel.dao.EmployeeDao;
+import ua.com.alevel.datatable.DataTableReq;
+import ua.com.alevel.datatable.DataTableRes;
 import ua.com.alevel.entity.Department;
 import ua.com.alevel.entity.Employee;
 
@@ -70,6 +72,11 @@ public class DepartmentDaoImpl implements DepartmentDao {
     @Override
     public Collection<Department> findAll() {
         return em.createQuery("select e from Department e", Department.class).getResultList();
+    }
+
+    @Override
+    public DataTableRes<Department> findAll(DataTableReq req) {
+        return null;
     }
 
     @Override
