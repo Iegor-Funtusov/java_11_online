@@ -39,7 +39,6 @@ public class BeanFactory {
             try {
                 Class<?> beanClass = Class.forName(beanName);
                 Object bean = beanClass.getDeclaredConstructor().newInstance();
-
                 Class<?>[] interfaces = beanClass.getInterfaces();
                 if (interfaces.length > 0) {
                     beans.put(interfaces[0], bean);

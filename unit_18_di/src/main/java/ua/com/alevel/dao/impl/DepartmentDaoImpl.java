@@ -20,14 +20,13 @@ public class DepartmentDaoImpl implements DepartmentDao {
 
     @Override
     public void create(Department entity) {
-        System.out.println("DepartmentDaoImpl.create");
-//        try (PreparedStatement preparedStatement =
-//                     jdbcService.getConnection().prepareStatement("INSERT INTO departments VALUES (default, ?)")) {
-//            preparedStatement.setString(1, entity.getName());
-//            preparedStatement.executeUpdate();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
+        try (PreparedStatement preparedStatement =
+                     jdbcService.getConnection().prepareStatement("INSERT INTO departments VALUES (default, ?)")) {
+            preparedStatement.setString(1, entity.getName());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
