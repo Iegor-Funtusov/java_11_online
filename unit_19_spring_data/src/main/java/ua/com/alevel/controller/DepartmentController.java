@@ -1,0 +1,85 @@
+package ua.com.alevel.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import ua.com.alevel.entity.Department;
+import ua.com.alevel.service.DepartmentService;
+
+import java.io.BufferedReader;
+import java.util.Collection;
+
+@Service
+public class DepartmentController extends AbstractController {
+
+    @Autowired
+    private DepartmentService departmentService;
+
+    public DepartmentController() {
+        super("department");
+    }
+
+    @Override
+    public void create(BufferedReader reader) {
+        try {
+            System.out.println("Please enter the name of the department");
+            String name = reader.readLine();
+            Department department = new Department();
+            department.setName(name);
+            departmentService.save(department);
+        } catch (Exception e) {
+            System.out.println("e = " + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void update(BufferedReader reader) {
+        try {
+            System.out.println("Please enter the id of the department");
+            Long id = Long.parseLong(reader.readLine());
+            System.out.println("Please enter the name of the department");
+            String name = reader.readLine();
+            Department department = departmentService.findById(id);
+            department.setName(name);
+            departmentService.update(department);
+        } catch (Exception e) {
+            System.out.println("e = " + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void delete(BufferedReader reader) {
+        try {
+            System.out.println("Please enter the id of the department");
+            Long id = Long.parseLong(reader.readLine());
+            departmentService.delete(id);
+        } catch (Exception e) {
+            System.out.println("e = " + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void findById(BufferedReader reader) {
+        try {
+            System.out.println("Please enter the id of the department");
+            Long id = Long.parseLong(reader.readLine());
+            Department department = departmentService.findById(id);
+            System.out.println("department = " + department);
+        } catch (Exception e) {
+            System.out.println("e = " + e.getMessage());
+            throw new RuntimeException(e.getMessage());
+        }
+    }
+
+    @Override
+    public void findAll() {
+        Collection<Department> departments = departmentService.findAll();
+        departments.forEach(System.out::println);
+//        departments.forEach(department -> {
+//            System.out.println("id: " + department.getId());
+//            System.out.println("name: " + department.getName());
+//        });
+    }
+}
