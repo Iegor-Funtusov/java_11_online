@@ -1,0 +1,15 @@
+.default-btn {
+    padding: 4px;
+    margin: 16px;
+    border-radius: 6px;
+    color: black;
+    background: chocolate;
+}
+
+.red-btn {
+    padding: 4px;
+    margin: 16px;
+    border-radius: 6px;
+    color: black;
+    background: red;
+}

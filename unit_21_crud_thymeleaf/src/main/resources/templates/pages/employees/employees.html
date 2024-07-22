@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<body>
+
+<div layout:fragment="content">
+    <div class="card mt-2">
+        <div class="card-header">
+            Employees
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Age</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="employee : ${employees}">
+                    <td th:text="${employee.getFirstName()}"></td>
+                    <td th:text="${employee.getLastName()}"></td>
+                    <td th:text="${employee.getAge()}"></td>
+                    <td>
+                        <a th:href="@{'/employees/' + ${employee.getId()} + '/delete'}" type="button" class="btn btn-danger">delete</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="mt-4">
+                <a th:href="@{/employees/new}" type="button" class="btn btn-primary">New employee</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
