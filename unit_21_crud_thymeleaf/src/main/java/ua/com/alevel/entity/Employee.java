@@ -1,13 +1,12 @@
 package ua.com.alevel.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import ua.com.alevel.listener.EmployeeAgeGeneratorByBirthDayListener;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,6 +15,9 @@ import java.util.Set;
 @Entity
 @ToString(callSuper = true)
 @Table(name = "employees")
+@EntityListeners({
+        EmployeeAgeGeneratorByBirthDayListener.class
+})
 public class Employee extends BaseEntity {
 
     @Column(name = "first_name")
@@ -24,7 +26,10 @@ public class Employee extends BaseEntity {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "age")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date birthDay;
+
+    @Transient
     private int age;
 
     @ManyToMany(mappedBy = "employees")

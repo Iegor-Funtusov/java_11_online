@@ -14,14 +14,24 @@
                 <thead>
                 <tr>
                     <th>Name</th>
+                    <th>Count of employees</th>
+                    <th>Details</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="department : ${departments}">
                     <td th:text="${department.getName()}"></td>
+                    <td th:text="${department.getEmployees().size()}"></td>
+                    <td>
+                        <a th:href="@{'/departments/' + ${department.getId()}}" type="button" class="btn btn-info">info</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
+
+            <div class="mt-4">
+                <a th:href="@{/departments/new}" type="button" class="btn btn-primary">New department</a>
+            </div>
         </div>
     </div>
 </div>

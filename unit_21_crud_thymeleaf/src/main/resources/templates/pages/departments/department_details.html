@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}">
+<body>
+
+<div layout:fragment="content">
+    <div class="card mt-2">
+        <div class="card-header">
+            Department details for <span th:text="${department.getName()}"></span>
+        </div>
+        <div class="card-body">
+            <div class="d-flex flex-column justify-content-center">
+                <div class="p-2">
+                    All employees
+                </div>
+                <div class="p-2">
+                    <ul>
+                        <li th:each="emp : ${department.getEmployees()}">
+                            <span th:text="${emp.firstName}"></span>
+                            <span th:text="${emp.lastName}"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="d-flex flex-column justify-content-center">
+                <div class="p-2">
+                    Attach new employee
+                </div>
+                <div class="p-2">
+                    <form method="post" th:action="@{'/departments/' + ${department.getId()} + '/attach'}" th:object="${data}">
+                        <div class="d-flex gap-3">
+                            <select class="form-select" th:field="*{employeeId}">
+                                <option th:each="key : ${employees}"
+                                        th:value="${key.getId()}"
+                                        th:utext="${key.getFirstName() + ' ' + key.getLastName()}"></option>
+                            </select>
+
+                            <input type="submit" th:value="'Submit'" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
