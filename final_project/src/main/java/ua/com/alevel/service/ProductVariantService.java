@@ -1,4 +1,4 @@
-package ua.com.alevel.persistence.service;
+package ua.com.alevel.service;
 
 import java.math.BigDecimal;
 

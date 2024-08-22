@@ -5,9 +5,9 @@ import org.springframework.stereotype.Service;
 import ua.com.alevel.persistence.dto.ProductPlpDto;
 import ua.com.alevel.persistence.entity.ProductImage;
 import ua.com.alevel.persistence.facade.PlpFacade;
-import ua.com.alevel.persistence.service.ProductImageService;
-import ua.com.alevel.persistence.service.ProductService;
-import ua.com.alevel.persistence.service.ProductVariantService;
+import ua.com.alevel.service.ProductImageService;
+import ua.com.alevel.service.ProductService;
+import ua.com.alevel.service.ProductVariantService;
 import ua.com.alevel.persistence.type.ColorType;
 
 import java.math.BigDecimal;
