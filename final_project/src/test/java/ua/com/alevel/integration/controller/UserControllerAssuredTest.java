@@ -35,8 +35,8 @@ public class UserControllerAssuredTest {
                 .body(generateUserReqJson())
         .when()
                 .post("/api/users/register")
-        .then().
-                statusCode(HttpStatus.CREATED.value());
+        .then()
+                .statusCode(HttpStatus.CREATED.value());
     }
 
     @Test
@@ -47,8 +47,8 @@ public class UserControllerAssuredTest {
                 .body(generateUserReqJson())
         .when()
                 .post("/api/users/register")
-        .then().
-                statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value());
+        .then()
+                .statusCode(HttpStatus.UNPROCESSABLE_ENTITY.value());
     }
 
     @Test
@@ -65,8 +65,8 @@ public class UserControllerAssuredTest {
                 .body(userJson)
         .when()
                 .post("/api/users/register")
-        .then().
-                statusCode(HttpStatus.BAD_REQUEST.value());
+        .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
     }
 
     @Test
@@ -76,8 +76,8 @@ public class UserControllerAssuredTest {
                 .contentType(ContentType.JSON)
         .when()
                 .get("/api/users/{id}", ID)
-        .then().
-                statusCode(HttpStatus.OK.value())
+        .then()
+                .statusCode(HttpStatus.OK.value())
                 .body("id", equalTo(1));
     }
 
@@ -88,8 +88,8 @@ public class UserControllerAssuredTest {
                 .contentType(ContentType.JSON)
         .when()
                 .get("/api/users/{id}", 2)
-        .then().
-                statusCode(HttpStatus.BAD_REQUEST.value());
+        .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
     }
 
     @Test
@@ -99,8 +99,8 @@ public class UserControllerAssuredTest {
                 .contentType(ContentType.JSON)
         .when()
                 .get("/api/users/{id}", -1)
-        .then().
-                statusCode(HttpStatus.BAD_REQUEST.value());
+        .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value());
     }
 
     @Test
@@ -115,8 +115,8 @@ public class UserControllerAssuredTest {
                 .body(userJson)
         .when()
                 .post("/api/users/register")
-        .then().
-                statusCode(HttpStatus.BAD_REQUEST.value())
+        .then()
+                .statusCode(HttpStatus.BAD_REQUEST.value())
                 .body("errors", notNullValue());
     }
 }
