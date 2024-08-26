@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import ua.com.alevel.exception.NotValidDataException;
+import ua.com.alevel.exception.UnprocessableEntityException;
 import ua.com.alevel.persistence.entity.user.RoleUser;
 import ua.com.alevel.persistence.entity.user.User;
 import ua.com.alevel.persistence.repository.UserRepository;
@@ -14,6 +15,7 @@ import ua.com.alevel.service.impl.UserServiceImpl;
 import ua.com.alevel.util.ExceptionUtil;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static ua.com.alevel.util.TestUtil.*;
 
 /**
  * onCreate
@@ -33,12 +35,6 @@ public class UserServiceTest {
 
     @Mock
     private UserRepository userRepository;
-
-    private final Long ID = 1L;
-    private final String TEST_EMAIL = "test@email.com";
-    private final String TEST_PASSWORD = "password";
-    private final String FIRST_NAME = "Name1";
-    private final String LAST_NAME = "Name2";
 
     @Test
     public void shouldBeCreateUserWhereIdIsNotNull() {
@@ -79,7 +75,7 @@ public class UserServiceTest {
         Exception thrown = Assertions.assertThrows(RuntimeException.class, () -> userService.create(user));
 
         // then
-        assertThat(thrown).isInstanceOf(NotValidDataException.class);
+        assertThat(thrown).isInstanceOf(UnprocessableEntityException.class);
         assertThat(thrown.getMessage()).isEqualTo(ExceptionUtil.USER_ALREADY_EXISTS_BY_EMAIL);
     }
 

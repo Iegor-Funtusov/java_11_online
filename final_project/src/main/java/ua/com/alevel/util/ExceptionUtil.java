@@ -9,6 +9,7 @@ public class ExceptionUtil {
     public static final String USER_FIRST_NAME_IS_NOT_PRESENT = "User first name is not present";
     public static final String USER_LAST_NAME_IS_NOT_PRESENT = "User last name is not present";
     public static final String USER_ROLE_IS_NOT_PRESENT = "User role is not present";
+    public static final String USER_NOT_FOUND_BY_EMAIL = "User not found by email";
 
     private ExceptionUtil() {}
 }
