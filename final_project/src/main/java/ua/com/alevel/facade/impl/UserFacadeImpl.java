@@ -3,10 +3,13 @@ package ua.com.alevel.facade.impl;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import ua.com.alevel.dto.req.UserReqDto;
+import ua.com.alevel.dto.res.TokenResDto;
 import ua.com.alevel.dto.res.UserResDto;
 import ua.com.alevel.facade.UserFacade;
 import ua.com.alevel.persistence.entity.user.RoleUser;
+import ua.com.alevel.persistence.entity.user.Token;
 import ua.com.alevel.persistence.entity.user.User;
+import ua.com.alevel.service.AuthService;
 import ua.com.alevel.service.UserService;
 
 @Service
@@ -14,6 +17,7 @@ import ua.com.alevel.service.UserService;
 public class UserFacadeImpl implements UserFacade {
 
     private final UserService userService;
+    private final AuthService authService;
 
     @Override
     public UserResDto createUser(UserReqDto dto) {
@@ -34,5 +38,12 @@ public class UserFacadeImpl implements UserFacade {
     @Override
     public UserResDto findById(Long id) {
         return new UserResDto(userService.findById(id));
+    }
+
+    @Override
+    public TokenResDto login(UserReqDto dto) {
+        User user = userService.findByEmail(dto.getEmail());
+        Token token = authService.login(user);
+        return new TokenResDto(token.getToken(), token.getExpiryDate());
     }
 }

@@ -11,13 +11,13 @@ import ua.com.alevel.persistence.facade.PlpFacade;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/plp")
+@RequestMapping("/api/products")
 @AllArgsConstructor
 public class PlpController {
 
     private final PlpFacade plpFacade;
 
-    @GetMapping
+    @GetMapping("/plp")
     public ResponseEntity<List<ProductPlpDto>> findAll() {
         return ResponseEntity.ok(plpFacade.findAll());
     }
