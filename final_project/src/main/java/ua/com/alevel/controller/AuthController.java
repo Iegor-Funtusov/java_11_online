@@ -29,7 +29,6 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<TokenResDto> login(@Valid @RequestBody UserReqDto dto) {
-        TokenResDto tokenResDto = userFacade.login(dto);
-        return ResponseEntity.ok(tokenResDto);
+        return ResponseEntity.ok(userFacade.login(dto));
     }
 }
